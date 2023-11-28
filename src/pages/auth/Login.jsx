@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
+import toast from "react-hot-toast";
 
 function Login () {
     const dispatch = useDispatch()
@@ -8,12 +9,15 @@ function Login () {
         email: "", password:""
     })
 
-    console.log("logindetail is", loginDetails)
-    function onSumit () {
+    // console.log("logindetail is", loginDetails)
+    async function onSumit () {
 
         console.log("function Clicked onSubmit")
-        if(!loginDetails.email || !loginDetails.password) return
-        dispatch(login(loginDetails))
+        if(!loginDetails.email || !loginDetails.password) return;
+
+        const response = await dispatch(login(loginDetails))
+        console.log("all response object is", response)
+        toast.success(response.payload.data.message)
     }
     return (
         <>
