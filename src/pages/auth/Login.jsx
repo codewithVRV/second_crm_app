@@ -2,22 +2,34 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function Login () {
     const dispatch = useDispatch()
+    const navigator = useNavigate()
     const [loginDetails, setLoginDetails] = useState({
         email: "", password:""
     })
 
-    // console.log("logindetail is", loginDetails)
+    function resetLoginDetails () {
+        setLoginDetails({
+            email: "", password:""
+        })
+        toast.error("Email/Passwrod is wrong... Try Again..")
+    }
     async function onSumit () {
 
-        console.log("function Clicked onSubmit")
         if(!loginDetails.email || !loginDetails.password) return;
 
         const response = await dispatch(login(loginDetails))
         console.log("all response object is", response)
-        toast.success(response.payload.data.message)
+        if(response.payload) {
+            toast.success(response.payload?.data?.message)
+            navigator("/")
+        }
+        else{
+            resetLoginDetails()
+        }
     }
     return (
         <>
@@ -49,6 +61,7 @@ function Login () {
                                 <input
                                 className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                 type="email"
+                                value={loginDetails.email}
                                 onChange={(e) => setLoginDetails({...loginDetails, email: e.target.value})}
                                 placeholder="Email"
                                 />
@@ -73,6 +86,7 @@ function Login () {
                                 <input
                                 className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                 type="password"
+                                value={loginDetails.password}
                                 onChange={(e) => setLoginDetails({...loginDetails, password: e.target.value})}
                                 placeholder="Password"
                                 />
