@@ -1,14 +1,12 @@
 
-import './App.css'
-// import Login from './pages/auth/Login'
-import Singup from './pages/auth/Signup'
+import MainRoute from './routing/MainRoutes'
 
 function App() {
 
   return (
     <>
-      <Singup />
-      {/* <Login /> */}
+     
+      <MainRoute />
     </>
   )
 }
