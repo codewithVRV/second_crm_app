@@ -1,6 +1,5 @@
 
 import MainRoute from './routing/MainRoutes'
-import { Toaster } from 'react-hot-toast';
 
 function App() {
 
@@ -8,7 +7,6 @@ function App() {
     <>
      
       <MainRoute />
-      <Toaster />
     </>
   )
 }

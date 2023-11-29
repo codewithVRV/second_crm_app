@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login () {
     const dispatch = useDispatch()
@@ -15,16 +15,16 @@ function Login () {
         setLoginDetails({
             email: "", password:""
         })
-        toast.error("Email/Passwrod is wrong... Try Again..")
+        // toast.error("Email/Passwrod is wrong... Try Again..")
     }
     async function onSumit () {
 
         if(!loginDetails.email || !loginDetails.password) return;
 
         const response = await dispatch(login(loginDetails))
-        console.log("all response object is", response)
+        // console.log("all response object is", response)
         if(response.payload) {
-            toast.success(response.payload?.data?.message)
+            // toast.success(`${response.payload?.data?.message} Successfully.. `)
             navigator("/")
         }
         else{
@@ -42,13 +42,13 @@ function Login () {
                         </h2>
                         <p className="mt-2 text-sm text-gray-600">
                         Don&#x27;t have an account?{" "}
-                        <a
+                        <Link to={"/signup"}
                             href="#"
                             title=""
                             className="font-semibold text-black transition-all duration-200 hover:underline"
                         >
                             Create a free account
-                        </a>
+                        </Link>
                         </p>
                         <form action="#" method="POST" className="mt-8">
                         <div className="space-y-5">
