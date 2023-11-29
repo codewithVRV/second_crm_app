@@ -2,6 +2,7 @@ import { BsFillMenuButtonWideFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { userLogout } from "../redux/authSlice";
+import { useEffect } from "react";
 
 function HomeLayout ({children}) {
     const authState = useSelector((state) => state.auth)
@@ -12,6 +13,10 @@ function HomeLayout ({children}) {
         dispatch(userLogout())
         navigator("/login")
     }
+
+    useEffect(() => {
+        if(!authState.isLoggedIn) navigator("/login")
+    }, [])
     return (
         <div className="min-h-[90vh]">
             <div className="drawer absolute left-0 right-0 cursor-pointer mt-4 ml-4">
