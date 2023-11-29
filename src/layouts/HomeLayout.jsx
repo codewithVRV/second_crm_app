@@ -1,6 +1,17 @@
 import { BsFillMenuButtonWideFill } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { userLogout } from "../redux/authSlice";
 
 function HomeLayout ({children}) {
+    const authState = useSelector((state) => state.auth)
+    const dispatch = useDispatch()
+    const navigator = useNavigate()
+
+    function onLogout () {
+        dispatch(userLogout())
+        navigator("/login")
+    }
     return (
         <div className="min-h-[90vh]">
             <div className="drawer absolute left-0 right-0 cursor-pointer mt-4 ml-4">
@@ -21,8 +32,20 @@ function HomeLayout ({children}) {
 
                         <li className='absolute bottom-8 w-3/4'>
                             <div className='w-full flex justify-center items-center'>
-                                <button className='btn-primary px-2 py-1 rounded-md font-semibold w-full'>Login</button>
-                                <button className='btn-secondary px-2 py-1 rounded-md font-semibold w-full'>Signup</button>
+                                
+                                {
+                                    !authState.isLoggedIn ? (
+                                        <>
+                                            <Link to={"/login"} className='btn-primary px-2 py-1 rounded-md font-semibold w-full'>Login</Link>
+                                            <Link to={"/signup"} className='btn-primary px-2 py-1 rounded-md font-semibold w-full'>SingUp</Link>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Link  className='btn-primary px-2 py-1 rounded-md font-semibold w-full' onClick={onLogout}>Logout</Link>
+                                            <Link  className='btn-secondary px-2 py-1 rounded-md font-semibold w-full'>Profile</Link>
+                                        </>
+                                    )
+                                }
                             </div>
                         </li>
                     </ul>
