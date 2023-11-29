@@ -5,12 +5,21 @@ import HomeLayout from "../../layouts/HomeLayout";
 function Home () {
     return (
         <HomeLayout>
-            <Card>
-                <BsFillPencilFill className='inline mr-2' />
-            </Card>
-            <Card status={30} background='bg-yellow-300' borderColor='border-green-300' fontColor='text-black' dividerColor='bg-black'>
-                <BsFillPencilFill className='inline mr-2' />
-            </Card>
+            <div className="flex justify-center items-center gap-5 mt-4">
+                <Card>
+                    <BsFillPencilFill className='inline mr-2' />
+                </Card>
+                <Card status={30} background='bg-yellow-300' borderColor='border-green-300' fontColor='text-black' dividerColor='bg-black'>
+                    <BsFillPencilFill className='inline mr-2' />
+                </Card>
+                <Card>
+                    <BsFillPencilFill className='inline mr-2' />
+                </Card>
+                <Card status={30} background='bg-yellow-300' borderColor='border-green-300' fontColor='text-black' dividerColor='bg-black'>
+                    <BsFillPencilFill className='inline mr-2' />
+                </Card>
+            </div>
+            
         </HomeLayout>
     )
 }
