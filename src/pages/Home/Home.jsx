@@ -10,6 +10,8 @@ function Home () {
     const authState = useSelector((state) => state.auth)
     const ticketsState = useSelector((state) => state.tickets)
     // console.log("ticketstate is", ticketsState)
+    // const ticketDistributiondata = useSelector((state) => state.ticketDistribution)
+    // console.log("ticketDistribution", ticketDistributiondata)
     const dispatcher = useDispatch()
 
     async function loadAllTickets () {
@@ -23,16 +25,19 @@ function Home () {
     return (
         <HomeLayout>
             <div className="flex justify-center items-center gap-5 mt-4">
-                <Card>
+                <Card titleText="open" quantity={ticketsState.ticketDistribution.open} status={ticketsState.ticketDistribution.open / ticketsState.ticketList.length}>
                     <BsFillPencilFill className='inline mr-2' />
                 </Card>
-                <Card status={30} background='bg-yellow-300' borderColor='border-green-300' fontColor='text-black' dividerColor='bg-black'>
+                <Card  titleText="inProgress" quantity={ticketsState.ticketDistribution.inProgress} status={ticketsState.ticketDistribution.inProgress / ticketsState.ticketList.length}background='bg-yellow-300' borderColor='border-green-300' fontColor='text-black' dividerColor='bg-black'>
                     <BsFillPencilFill className='inline mr-2' />
                 </Card>
-                <Card>
+                <Card  titleText="resolved" quantity={ticketsState.ticketDistribution.resolved} status={ticketsState.ticketDistribution.resolved / ticketsState.ticketList.length}>
                     <BsFillPencilFill className='inline mr-2' />
                 </Card>
-                <Card status={30} background='bg-yellow-300' borderColor='border-green-300' fontColor='text-black' dividerColor='bg-black'>
+                <Card  titleText="onHold" quantity={ticketsState.ticketDistribution.onHold} status={ticketsState.ticketDistribution.onHold / ticketsState.ticketList.length} background='bg-yellow-300' borderColor='border-green-300' fontColor='text-black' dividerColor='bg-black'>
+                    <BsFillPencilFill className='inline mr-2' />
+                </Card>
+                <Card  titleText="cancelled" quantity={ticketsState.ticketDistribution.cancelled} status={ticketsState.ticketDistribution.cancelled / ticketsState.ticketList.length} background='bg-yellow-300' borderColor='border-green-300' fontColor='text-black' dividerColor='bg-black'>
                     <BsFillPencilFill className='inline mr-2' />
                 </Card>
             </div>
