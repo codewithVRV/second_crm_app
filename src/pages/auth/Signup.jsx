@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signup } from "../../redux/authSlice";
-import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -13,7 +12,7 @@ function Singup() {
     })
     const dispatch = useDispatch()
     const navigator = useNavigate()
-    console.log("signupDetails", signupDetails)
+    // console.log("signupDetails", signupDetails)
 
     function handleInputChange (e) {
         const {name, value} = e.target;

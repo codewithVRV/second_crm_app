@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
-import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login () {
