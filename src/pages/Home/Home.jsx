@@ -6,27 +6,12 @@ import { IoCheckmarkDoneCircle     } from "react-icons/io5";
 
 import Card from "../../components/Card";
 import HomeLayout from "../../layouts/HomeLayout";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllTicketsForTheUser } from "../../redux/ticketSlice";
+import useTicket from "../../hooks/useTickets";
 
 function Home () {
 
-    const authState = useSelector((state) => state.auth)
-    const ticketsState = useSelector((state) => state.tickets)
-    // console.log("ticketstate is", ticketsState)
-    // const ticketDistributiondata = useSelector((state) => state.ticketDistribution)
-    // console.log("ticketDistribution", ticketDistributiondata)
-    const dispatcher = useDispatch()
+    const [ticketsState] = useTicket()
 
-    async function loadAllTickets () {
-        const response = await dispatcher(getAllTicketsForTheUser())
-        console.log("response of alltickets",response)
-    }
-
-    useEffect(() => {
-        loadAllTickets()
-    }, [ticketsState.token])
     return (
         <HomeLayout>
             <div className="flex justify-center items-center gap-5 mt-4">

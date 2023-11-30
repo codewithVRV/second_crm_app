@@ -34,7 +34,7 @@ function HomeLayout ({children}) {
                     <label htmlFor="my-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                         <li><a>View All Tickets</a></li>
-                        <li><a>Dashboard</a></li>
+                        <li><Link to={"/dashboard"}>Dashboard</Link></li>
 
                         <li className='absolute bottom-8 w-3/4'>
                             <div className='w-full flex justify-center items-center'>
