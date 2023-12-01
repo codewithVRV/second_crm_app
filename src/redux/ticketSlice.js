@@ -40,7 +40,7 @@ const ticketSlice = createSlice({
     reducers: {
         filterTickets: (state, action) =>{
             // console.log("action", action)
-            state.ticketList = state.downloadedTickets.filter((ticket) => ticket.status = action.payload.status)
+            state.ticketList = state.downloadedTickets.filter((ticket) => ticket.status === action.payload.status)
         }
     },
     extraReducers: (builder) => {

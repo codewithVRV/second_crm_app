@@ -8,7 +8,6 @@ function useTicket () {
     const ticketsState = useSelector((state) => state.tickets)
     const [searchParams] = useSearchParams()
 
-    console.log("searchparam", searchParams.get("status"))
    
     const dispatcher = useDispatch()
 

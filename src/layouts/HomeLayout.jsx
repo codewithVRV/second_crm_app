@@ -6,7 +6,6 @@ import { useEffect } from "react";
 
 function HomeLayout ({children}) {
     const authState = useSelector((state) => state.auth)
-    // console.log("authState is", authState)
     const dispatch = useDispatch()
     const navigator = useNavigate()
 
