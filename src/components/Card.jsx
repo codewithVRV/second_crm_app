@@ -1,7 +1,14 @@
-function Card({ children, fontColor="text-white", borderColor="border-error", dividerColor="bg-gray-100", background="bg-primary", titleText = "", status = 50, quantity = "" }) {
+import { useNavigate } from "react-router-dom";
 
+function Card({ children, fontColor="text-white", borderColor="border-error", dividerColor="bg-gray-100", background="bg-primary", titleText = "", status = 50, quantity = "" }) {
+    
+    const navigator = useNavigate()
+
+    function onCardClick() {
+        navigator(`/dashboard?status=${titleText}`)
+    }
     return (
-            <div className={`border-b-8 ${borderColor} w-64 h-44 ${background} rounded-md flex flex-col justify-center items-center py-2 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out`}>
+            <div onClick={onCardClick} className={`border-b-8 ${borderColor} w-64 h-44 ${background} rounded-md flex flex-col justify-center items-center py-2 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out`}>
 
             <div className='text-primary-content text-2xl mb-2'>
                 {children} <span>{titleText}</span>
