@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import HomeLayout from "../../layouts/HomeLayout";
 import axiosInstance from "../../config/axiosInstance";
 import DataTable from "react-data-table-component";
+import UserDisplayModal from "../../components/UserDisplayModal";
 const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
 
 function ListAllUsers () {
@@ -13,6 +14,7 @@ function ListAllUsers () {
         clientName:"",
         userType:"",
         userStatus:"",
+        id:"",
     })
     async function loadUsers() {
         const response = await axiosInstance.get("/users", {
@@ -22,6 +24,8 @@ function ListAllUsers () {
         })
         setUserList(response.data.result)
     }
+
+    
     const columns = [
         {
             name: 'User Id',
@@ -86,15 +90,16 @@ function ListAllUsers () {
             <h1 className="text-center font-bold text-5xl mb-4 text-gray-500">User List</h1>
             {userList && 
                 <DataTable
+                    className="cursor-pointer"
                     columns={columns}
                     onRowClicked={(row) => {
-                        console.log(row)
                         setUserDisplay({
                             name: row.name,
                             email: row.email,
                             clientName:row.clientName,
                             userType:row.userType,
                             userStatus:row.userStatus,
+                            id: row._id,
                         })
                         document.getElementById('my_modal_1').showModal()
                     }}
@@ -104,22 +109,8 @@ function ListAllUsers () {
                     customStyles={customStyles}
                 />
                 }
-                <dialog id="my_modal_1" className="modal">
-                    <div className="modal-box">
-                        <h3 className="font-bold text-lg mt-0 text-center">User Details</h3>
-                        <p className="py-[2px]">Name :- <span className="text-indigo-600 text-xl mx-5 font-semibold">{userDisplay.name}</span></p>
-                        <p className="py-[2px]">Email:- <span className="text-indigo-600 text-xl mx-5 font-semibold">{userDisplay.email}</span></p>
-                        <p className="py-[2px]">Type:-  <span className="text-indigo-600 text-xl mx-5 font-semibold">{userDisplay.userType}</span></p>
-                        <p className="py-[2px]">Status:- <span className="text-indigo-600 text-xl mx-5 font-semibold">{userDisplay.userStatus}</span></p>
-                        <p className="py-[2px]">ClientName:- <span className="text-indigo-600 text-xl mx-5 font-semibold">{userDisplay.clientName}</span></p>
-                        <div className="modal-action">
-                        <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn">Close</button>
-                        </form>
-                        </div>
-                    </div>
-                </dialog>
+                {/*  */}
+                <UserDisplayModal key={userDisplay.email} user={userDisplay}/>
            </div>
         </HomeLayout>
     )

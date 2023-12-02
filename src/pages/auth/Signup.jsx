@@ -12,11 +12,9 @@ function Singup() {
     })
     const dispatch = useDispatch()
     const navigator = useNavigate()
-    // console.log("signupDetails", signupDetails)
 
     function handleInputChange (e) {
         const {name, value} = e.target;
-        // console.log("name is", name, "value is", value)
         setSingupDetails({
             ...signupDetails,
             [name] : value,
@@ -24,7 +22,6 @@ function Singup() {
     }
 
     function handleUserType (e) {
-        // console.log(e.target.textContent)
         const userTypeSelected = e.target.textContent;
         setSingupDetails({
             ...signupDetails,
@@ -52,7 +49,7 @@ function Singup() {
             !signupDetails.userStatus || !signupDetails.userStatus) return;
 
         const response = await dispatch(signup(signupDetails))
-        console.log("response", response)
+        // console.log("response", response)
         if(response.payload) {
             // toast.success("Successfull created new user..")
             navigator("/login")
