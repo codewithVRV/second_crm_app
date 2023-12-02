@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 function Card({ children, fontColor="text-white", borderColor="border-error", dividerColor="bg-gray-100", background="bg-primary", titleText = "", status = 50, quantity = "" }) {
     
     const navigator = useNavigate()
+    const statusPercent = status*100;
 
     function onCardClick() {
         navigator(`/dashboard?status=${titleText}`)
@@ -20,7 +21,7 @@ function Card({ children, fontColor="text-white", borderColor="border-error", di
                 <div className={`text-7xl ${fontColor}`}>
                     {quantity}
                 </div>
-                <div className={`radial-progress ${fontColor}`} style={{"--value": status*100}}>{status*100}%</div>
+                <div className={`radial-progress ${fontColor}`} style={{"--value": status*100}}>{statusPercent.toString().substring(0, 4)}%</div>
             </div>
 
             </div>
