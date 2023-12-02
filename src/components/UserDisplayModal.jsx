@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axiosInstance from "../config/axiosInstance";
 import toast from "react-hot-toast";
 
-function UserDisplayModal ({user}) {
+function UserDisplayModal ({user, resetTable}) {
     const [userDisplay, setUserDisplay] = useState(user)
 
     async function handleStatusType (e) {
@@ -20,7 +20,10 @@ function UserDisplayModal ({user}) {
             if(response?.data?.result) {
                 toast.success("Successfully Updated the user..")
                 setUserDisplay({...userDisplay, userStatus: response?.data?.result.userStatus})
+                resetTable()
+
             }
+
         }
         catch (error) {
             toast.error("Something went wrong..")

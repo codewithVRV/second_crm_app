@@ -110,7 +110,7 @@ function ListAllUsers () {
                 />
                 }
                 {/*  */}
-                <UserDisplayModal key={userDisplay.email} user={userDisplay}/>
+                <UserDisplayModal key={userDisplay.email} user={userDisplay} resetTable={loadUsers}/>
            </div>
         </HomeLayout>
     )
