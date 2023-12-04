@@ -11,6 +11,7 @@ function Dashboard () {
 
     const [ticketState] = useTicket()
     const [selectedTickets, setSlectedTickets] = useState({})
+    console.log("selected ticket", selectedTickets)
     const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
     const columns = [
         {
@@ -103,7 +104,7 @@ function Dashboard () {
                             }}
                         />
                     }
-                    <TicketDisplayModal ticket={selectedTickets} />
+                    <TicketDisplayModal ticket={selectedTickets} key={selectedTickets._id} />
                 </div>
             </div>  
         </HomeLayout>

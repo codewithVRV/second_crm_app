@@ -1,29 +1,49 @@
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateTicket } from "../redux/ticketSlice";
+
 function TicketDisplayModal ({ticket}) {
-    // console.log("ticked", ticket)
+    const dispatcher = useDispatch()
+    const [currentTicket, setCurrentTicket] = useState(ticket)
+
+    function handleTicketChange (e) {
+        const {name, value} = e.target;
+        setCurrentTicket({
+            ...currentTicket, 
+            [name] : value,
+        })
+    }
+
+   
+    async function handleUpdateTicket () {
+        await dispatcher(updateTicket(currentTicket))
+    }
+
+
+   
     return (
         <dialog id="my_ticket_modal" className="modal">
             <div className="modal-box">
-                <h3 className="font-bold text-lg">{ticket.title}</h3>
-                {/* <p className="py-4">{ticket.description}</p> */}
-                <textarea className="textarea textarea-primary" placeholder="Update ticket here..">{ticket.description}</textarea>
-                <select className="select w-full max-w-xs">
+                <h3 className="font-bold text-lg">{ticket.title}</h3> 
+                <textarea name="description" className="textarea textarea-primary" onChange={handleTicketChange} placeholder="Update ticket here..">{ticket.description}</textarea>
+                <select name="ticketPriority" className="select w-full max-w-xs" onChange={handleTicketChange}>
                     <option disabled selected>Ticket Priority</option>
-                    <option value={"1"} selected={ticket.ticketPriority == 1}>1</option>
-                    <option value={"2"} selected={ticket.ticketPriority == 2}>2</option>
-                    <option value={"3"} selected={ticket.ticketPriority == 3}>3</option>
-                    <option value={"4"} selected={ticket.ticketPriority >= 4}>4</option>
+                    <option value={"1"} selected={currentTicket.ticketPriority == 1}>1</option>
+                    <option value={"2"} selected={currentTicket.ticketPriority == 2}>2</option>
+                    <option value={"3"} selected={currentTicket.ticketPriority == 3}>3</option>
+                    <option value={"4"} selected={currentTicket.ticketPriority >= 4}>4</option>
                 </select>
-                <select className="select w-full max-w-xs">
+                <select name="status" className="select w-full max-w-xs" onChange={handleTicketChange}>
                     <option disabled selected>Ticket status</option>
-                    <option value={"open"} selected={ticket.status == "open"}>open</option>
-                    <option value={"inProgress"} selected={ticket.status == "inProgress"}>inProgress</option>
-                    <option value={"onHold"} selected={ticket.status == "onHold"}>onHold</option>
-                    <option value={"resolved"} selected={ticket.status == "resolved"}>resolved</option>
-                    <option value={"cancelled"} selected={ticket.status == "cancelled"}>cancelled</option>
+                    <option value={"open"} selected={currentTicket.status == "open"}>open</option>
+                    <option value={"inProgress"} selected={currentTicket.status == "inProgress"}>inProgress</option>
+                    <option value={"onHold"} selected={currentTicket.status == "onHold"}>onHold</option>
+                    <option value={"resolved"} selected={currentTicket.status == "resolved"}>resolved</option>
+                    <option value={"cancelled"} selected={currentTicket.status == "cancelled"}>cancelled</option>
                 </select>
                 <div className="modal-action">
                 <form method="dialog">
-                    <button className="bg-indigo-700 text-white px-2 py-1 font-semibold rounded-md mx-3 hover:bg-indigo-500">Update Ticket</button>
+                    <button onClick={handleUpdateTicket} className="bg-indigo-700 text-white px-2 py-1 font-semibold rounded-md mx-3 hover:bg-indigo-500">Update Ticket</button>
                     {/* if there is a button in form, it will close the modal */}
                     <button className="btn">Close</button>
                 </form>
