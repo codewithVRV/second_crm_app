@@ -19,7 +19,7 @@ function HomeLayout ({children}) {
     }, [])
     return (
         <div className="min-h-[90vh]">
-            <div className="drawer absolute left-0 right-0 cursor-pointer mt-4 ml-4">
+            <div className="drawer absolute z-10 left-0 right-0 cursor-pointer mt-4 ml-4">
                 <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     <label htmlFor="my-drawer">

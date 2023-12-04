@@ -3,11 +3,14 @@ import useTicket from "../hooks/useTickets";
 import { FaDownload } from "react-icons/fa";
 import { usePDF } from "react-to-pdf";
 import DataTable from 'react-data-table-component';
+import TicketDisplayModal from "../components/TicketDisplayModal";
+import { useState } from "react";
 const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
 
 function Dashboard () {
 
     const [ticketState] = useTicket()
+    const [selectedTickets, setSlectedTickets] = useState({})
     const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
     const columns = [
         {
@@ -88,13 +91,19 @@ function Dashboard () {
         <div ref={targetRef}>
                     {ticketState && 
                         <DataTable
+                            className="cursor-pointer"
                             columns={columns}
                             data={ticketState.ticketList}
                             expandableRows
                             expandableRowsComponent={ExpandedComponent}
                             customStyles={customStyles}
+                            onRowClicked={(row) => {
+                                setSlectedTickets(row)
+                                document.getElementById('my_ticket_modal').showModal()
+                            }}
                         />
                     }
+                    <TicketDisplayModal ticket={selectedTickets} />
                 </div>
             </div>  
         </HomeLayout>
