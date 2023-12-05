@@ -34,7 +34,7 @@ function HomeLayout ({children}) {
                     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                         <li><Link to={"/"}>Home</Link></li>
                         <li><Link to={"/dashboard"}>Dashboard</Link></li>
-                        {authState.role === "admin" && <li><Link to={"/ticket/create"}>Create Ticket</Link></li>}
+                        <li><Link to={"/ticket/create"}>Create Ticket</Link></li>
                         {authState.role === "admin" && <li><Link to={"/users"}>All Users</Link></li>}
 
                         <li className='absolute bottom-8 w-3/4'>
@@ -48,8 +48,8 @@ function HomeLayout ({children}) {
                                         </>
                                     ) : (
                                         <>
-                                            <Link  className='btn-primary px-2 py-1 rounded-md font-semibold w-full' onClick={onLogout}>Logout</Link>
-                                            <Link  className='btn-secondary px-2 py-1 rounded-md font-semibold w-full'>Profile</Link>
+                                            <Link  className='btn-primary px-2 py-1 rounded-md text-center font-semibold w-full' onClick={onLogout}>Log Out</Link>
+                                            {/* <Link  className='btn-secondary px-2 py-1 rounded-md font-semibold w-full'>Profile</Link> */}
                                         </>
                                     )
                                 }

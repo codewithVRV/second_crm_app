@@ -46,7 +46,7 @@ function CreateTicket () {
 
     return (
         <HomeLayout>
-            <div className="min-h-[90vh] flex items-center justify-center">
+            <div className="min-h-[50vh] mt-5 flex items-center justify-center">
 
             <form 
                 onSubmit={onFormSubmit}

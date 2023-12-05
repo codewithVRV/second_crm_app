@@ -162,7 +162,7 @@ function Singup() {
                                 <ul onClick={handleUserType} className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                                     <li><a>customer</a></li>
                                     <li><a>engineer</a></li>
-                                    <li><a>admin</a></li>
+                                    {/* <li><a>admin</a></li> */}
                                 </ul>
                             </details>
                             <button
