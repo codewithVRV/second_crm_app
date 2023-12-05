@@ -57,13 +57,39 @@ export const updateTicket = createAsyncThunk ("tickets/updateTicket", async (tic
         console.log("Error from ticketslice getallTickets", error)
     }
 })
+
+export const createTicket = createAsyncThunk ("tickets/createTicket", async (ticket) => {
+    try{
+        const response =  axiosInstance.post(`ticket`, 
+            ticket, 
+        {
+            headers: {
+                "x-access-token" : localStorage.getItem("token")
+            }
+        })
+        toast.promise(response, {
+            loading: "Creating the ticket",
+            success: "Successfull created the ticket",
+            error: "Something Went Wrong Try Again.."
+            
+        })
+        return await response;
+        
+    }
+    catch(error) {
+        console.log("Error from ticketslice getallTickets", error)
+    }
+})
 const ticketSlice = createSlice({
     name: 'tickets',
     initialState,
     reducers: {
         filterTickets: (state, action) =>{
             state.ticketList = state.downloadedTickets.filter((ticket) => ticket.status === action.payload.status)
-        }
+        },
+        // resetTicketList: (state) => {
+        //     state.ticketList = state.downloadedTickets;
+        // }
     },
     extraReducers: (builder) => {
         builder.addCase(getAllTicketsForTheUser.fulfilled, (state, action) => {
@@ -103,6 +129,22 @@ const ticketSlice = createSlice({
                 state.ticketDistribution[ticket.status] = state.ticketDistribution[ticket.status] + 1
             })
 
+        })
+        .addCase(createTicket.fulfilled, (state, action) => {
+            if(action?.payload?.data == undefined) return;
+            const newTicket = action.payload.data;
+            state.downloadedTickets.push(newTicket)
+            state.ticketList = state.downloadedTickets;
+            state.ticketDistribution =  {
+                open: 0,
+                inProgress: 0,
+                resolved: 0,
+                onHold: 0,
+                cancelled: 0,
+            }
+            state.downloadedTickets.forEach((ticket) => {
+                state.ticketDistribution[ticket.status] = state.ticketDistribution[ticket.status] + 1
+            })
         })
     }
 });

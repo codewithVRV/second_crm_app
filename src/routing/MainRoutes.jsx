@@ -14,7 +14,7 @@ function MainRoute () {
             <Route path="/login" element={<Login />}/>
             <Route path="/signup" element={<Singup />}/>
             <Route path="/ticket/create" element={<CreateTicket />}/>
-            <Route element={<AuthRoutes allowListedRole={["admin", "engineer"]}/>}>
+            <Route element={<AuthRoutes allowListedRole={["admin"]}/>}>
                 <Route path="/users" element={<ListAllUsers />}/>
             </Route>
             <Route path="/dashboard" element={<Dashboard />}/>

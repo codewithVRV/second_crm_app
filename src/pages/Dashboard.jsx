@@ -11,7 +11,6 @@ function Dashboard () {
 
     const [ticketState] = useTicket()
     const [selectedTickets, setSlectedTickets] = useState({})
-    console.log("selected ticket", selectedTickets)
     const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
     const columns = [
         {

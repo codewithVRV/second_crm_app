@@ -1,12 +1,55 @@
+import { useDispatch, useSelector } from "react-redux";
 import HomeLayout from "../../layouts/HomeLayout";
+import { useState } from "react";
+import { createTicket } from "../../redux/ticketSlice";
+import toast from "react-hot-toast";
+import useTicket from "../../hooks/useTickets";
 
 function CreateTicket () {
+    const auth = useSelector((state) => state.auth)
+    const dispatcher = useDispatch()
+    useTicket()
+    const [ticket, setTicket] = useState({
+        title: "",
+        description: "",
+        ticketPriority: 4,
+        status: "open",
+        clientName:auth.data.clientName,
+    })
+
+
+    async function onFormSubmit (e) {
+        e.preventDefault()
+        if(!ticket.title || !ticket.description) {
+            toast.error("Title and description both are mandatory..")
+            return;
+        }
+        const response = await dispatcher(createTicket(ticket))
+        if(response.payload?.data) {
+            setTicket({
+                title: "",
+                description: "",
+                ticketPriority: 4,
+                status: "open",
+                clientName:auth.data.clientName,
+            })
+        }
+    }
+
+    function handleFormChange (e) {
+        const {name, value} = e.target;
+        setTicket({
+            ...ticket,
+            [name] : value,
+        })
+    }
+
     return (
         <HomeLayout>
             <div className="min-h-[90vh] flex items-center justify-center">
 
             <form 
-
+                onSubmit={onFormSubmit}
                 className="min-w-[40rem] border p-20 border-sky-500 rounded-lg bg-sky-900 hover:bg-sky-700 transition-all ease-in-out duration-300"
             >
 
@@ -18,7 +61,11 @@ function CreateTicket () {
                     <label className="label">
                         <span className="label-text text-white text-lg">What is title of the issue?</span>
                     </label>
-                    <input type="text" placeholder="Type here" className="input input-bordered input-primary w-full bg-white text-black" />
+                    <input 
+                        value={ticket.title}
+                        onChange={handleFormChange}
+                        name="title"
+                    type="text" placeholder="Type here" className="input input-bordered input-primary w-full bg-white text-black" />
                 </div>
 
                 <div className="form-control w-full my-4">
@@ -26,6 +73,9 @@ function CreateTicket () {
                         <span className="label-text text-white text-lg">Please describe your issue?</span>
                     </label>
                     <textarea 
+                        value={ticket.description}
+                        onChange={handleFormChange}
+                        name="description"
                         placeholder="Type here"
                         rows="8"
                         className="p-2 resize-none w-full rounded-md bg-white text-black" 

@@ -16,6 +16,7 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title);
 function Home () {
 
     const [ticketsState] = useTicket()
+    console.log("ticketState", ticketsState)
     const pieChartData = {
         labels: Object.keys(ticketsState.ticketDistribution),
         datasets: [

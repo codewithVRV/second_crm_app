@@ -12,10 +12,18 @@ function useTicket () {
     const dispatcher = useDispatch()
 
     async function loadAllTickets () {
-        await dispatcher(getAllTicketsForTheUser())
+        // if(ticketsState.downloadedTickets.length == 0) {
+
+            await dispatcher(getAllTicketsForTheUser())
+
+        // }
         if(searchParams.get("status")){
             dispatcher(filterTickets({status:searchParams.get("status")}))
         }
+        // else {
+        //     dispatcher(resetTicketList());
+        // }
+        
     }
 
     useEffect(() => {
