@@ -34,7 +34,7 @@ function useTicket () {
 
     useEffect(() => {
         loadAllTickets()
-    }, [authState.token, searchParams.get("status")])
+    }, [searchParams.get("status")])
 
     return [ticketsState]
 }

@@ -9,6 +9,7 @@ import { Pie } from 'react-chartjs-2';
 import Card from "../../components/Card";
 import HomeLayout from "../../layouts/HomeLayout";
 import useTicket from "../../hooks/useTickets";
+import { useSelector } from "react-redux";
 
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
@@ -16,7 +17,9 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title);
 function Home () {
 
     const [ticketsState] = useTicket()
-    console.log("ticketState", ticketsState)
+    const authState = useSelector((state) => state.auth)
+    console.log(authState)
+    // console.log("ticketState", ticketsState)
     const pieChartData = {
         labels: Object.keys(ticketsState.ticketDistribution),
         datasets: [
@@ -29,6 +32,8 @@ function Home () {
 
     return (
         <HomeLayout>
+            {/* {authState.role === "customer" ? <h1 className="text-center text-3xl mt-5 mb-10"> <span className="font-bold text-4xl">{(authState.data.name) ?  authState.data.name : "loading.."}:- </span> You are <span className="text-4xl font-bold">{(authState.role) ? authState.role : "loading.."}</span>. Below this all the tickets are raised by You.</h1> :
+             <h1 className="text-center text-3xl mt-5 mb-10"> <span className="font-bold text-4xl">{(authState.data.name) ?  authState.data.name : "loading.."}:- </span> You are <span className="text-4xl font-bold">{(authState.role) ? authState.role : "loading.."}</span>. Below this all the tickets are assigned to</h1>} */}
             <div className="flex justify-center items-center gap-5 mt-4">
                 <Card titleText="open" quantity={ticketsState.ticketDistribution.open} status={ticketsState.ticketDistribution.open / ticketsState.ticketList.length}>
                     <BsFillPencilFill className='inline mr-2' />

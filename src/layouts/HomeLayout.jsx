@@ -49,7 +49,6 @@ function HomeLayout ({children}) {
                                     ) : (
                                         <>
                                             <Link  className='btn-primary px-2 py-1 rounded-md text-center font-semibold w-full' onClick={onLogout}>Log Out</Link>
-                                            {/* <Link  className='btn-secondary px-2 py-1 rounded-md font-semibold w-full'>Profile</Link> */}
                                         </>
                                     )
                                 }
