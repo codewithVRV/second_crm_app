@@ -46,11 +46,6 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         userLogout: (state) => {
-            // localStorage.clear();
-            // state.role = "";
-            // state.data = undefined;
-            // state.token = "";
-            // state.isLoggedIn = false;
             localStorage.clear();
             state.role = '';
             state.isLoggedIn = false;
