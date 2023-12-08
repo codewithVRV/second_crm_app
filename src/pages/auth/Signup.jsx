@@ -49,9 +49,7 @@ function Singup() {
             !signupDetails.userStatus || !signupDetails.userStatus) return;
 
         const response = await dispatch(signup(signupDetails))
-        // console.log("response", response)
         if(response.payload) {
-            // toast.success("Successfull created new user..")
             navigator("/login")
         }
         else{
@@ -158,11 +156,10 @@ function Singup() {
                             </div>
                             <div>
                             <details className="dropdown" id="userTypeDropDown">
-                                <summary className="m-1 btn bg-black text-white">{!signupDetails.userType ? "User Type" : signupDetails.userType}</summary>
+                                <summary className="m-1 btn hover:bg-black/80 bg-black text-white mb-5">{!signupDetails.userType ? "User Type" : signupDetails.userType}</summary>
                                 <ul onClick={handleUserType} className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                                    <li><a>customer</a></li>
-                                    <li><a>engineer</a></li>
-                                    {/* <li><a>admin</a></li> */}
+                                    <li className=" text-black text-lg"><a>customer</a></li>
+                                    <li className=" text-black text-lg"><a>engineer</a></li>
                                 </ul>
                             </details>
                             <button

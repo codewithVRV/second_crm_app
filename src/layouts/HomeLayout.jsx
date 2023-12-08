@@ -31,11 +31,11 @@ function HomeLayout ({children}) {
                 </div> 
                 <div className="drawer-side">
                     <label htmlFor="my-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                        <li><Link to={"/"}>Home</Link></li>
-                        <li><Link to={"/dashboard"}>Dashboard</Link></li>
-                        <li><Link to={"/ticket/create"}>Create Ticket</Link></li>
-                        {authState.role === "admin" && <li><Link to={"/users"}>All Users</Link></li>}
+                    <ul className="menu p-4  w-40 min-h-full bg-base-200 text-base-content">
+                        <li className="hover:bg-blue-600 rounded-xl hover:text-white hover:font-semibold transition-all ease-in-out duration-500"><Link to={"/"}>Home</Link></li>
+                        <li className="hover:bg-blue-600 rounded-xl hover:text-white hover:font-semibold transition-all ease-in-out duration-500"><Link to={"/dashboard"}>Dashboard</Link></li>
+                        <li className="hover:bg-blue-600 rounded-xl hover:text-white hover:font-semibold transition-all ease-in-out duration-500"><Link to={"/ticket/create"}>Create Ticket</Link></li>
+                        {authState.role === "admin" && <li  className="hover:bg-blue-600 rounded-xl hover:text-white hover:font-semibold transition-all ease-in-out duration-500"><Link to={"/users"}>All Users</Link></li>}
 
                         <li className='absolute bottom-8 w-3/4'>
                             <div className='w-full flex justify-center items-center'>
@@ -43,12 +43,12 @@ function HomeLayout ({children}) {
                                 {
                                     !authState.isLoggedIn ? (
                                         <>
-                                            <Link to={"/login"} className='btn-primary px-2 py-1 rounded-md font-semibold w-full'>Login</Link>
-                                            <Link to={"/signup"} className='btn-primary px-2 py-1 rounded-md font-semibold w-full'>SingUp</Link>
+                                            <Link to={"/login"} className='hover:bg-blue-600 rounded-xl hover:text-white hover:font-semibold transition-all ease-in-out duration-500 btn-primary px-2 py-1 rounded-md font-semibold w-full'>Login</Link>
+                                            <Link to={"/signup"} className='hover:bg-blue-600 rounded-xl hover:text-white hover:font-semibold transition-all ease-in-out duration-500 btn-primary px-2 py-1 rounded-md font-semibold w-full'>SingUp</Link>
                                         </>
                                     ) : (
                                         <>
-                                            <Link  className='btn-primary px-2 py-1 rounded-md text-center font-semibold w-full' onClick={onLogout}>Log Out</Link>
+                                            <Link  className='hover:bg-blue-600 rounded-xl hover:text-white hover:font-semibold transition-all ease-in-out duration-500 btn-primary px-2 py-1 rounded-md text-center font-semibold w-full' onClick={onLogout}>Log Out</Link>
                                         </>
                                     )
                                 }

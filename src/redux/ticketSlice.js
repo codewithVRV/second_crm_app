@@ -79,6 +79,7 @@ export const updateTicket = createAsyncThunk ("tickets/updateTicket", async (tic
 })
 
 export const createTicket = createAsyncThunk ("tickets/createTicket", async (ticket) => {
+    console.log("newTicket from crateticket Thunk", ticket)
     try{
         const response =  axiosInstance.post(`ticket`, 
             ticket, 
@@ -168,6 +169,7 @@ const ticketSlice = createSlice({
 
         })
         .addCase(createTicket.fulfilled, (state, action) => {
+            console.log("action of newCreateTicket", action)
             if(action?.payload?.data == undefined) return;
             const newTicket = action.payload.data;
             state.downloadedTickets.push(newTicket)

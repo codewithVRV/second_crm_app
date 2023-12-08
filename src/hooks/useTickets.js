@@ -12,7 +12,6 @@ function useTicket () {
     const dispatcher = useDispatch()
 
     async function loadAllTickets () {
-        // if(ticketsState.downloadedTickets.length == 0) {
 
         if(authState.role === "customer") {
             await dispatcher(getAllCreatedTicketsForTheUser())
@@ -22,13 +21,11 @@ function useTicket () {
         }
             
 
-        // }
+       
         if(searchParams.get("status")){
             dispatcher(filterTickets({status:searchParams.get("status")}))
         }
-        // else {
-        //     dispatcher(resetTicketList());
-        // }
+       
         
     }
 

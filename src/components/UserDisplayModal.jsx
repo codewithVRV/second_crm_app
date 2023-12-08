@@ -39,14 +39,14 @@ function UserDisplayModal ({user, resetTable}) {
     return (
         <dialog id="my_modal_1" className="modal">
                     <div className="modal-box">
-                        <h3 className="font-bold text-lg mt-0 text-center">User Details</h3>
-                        <p className="py-[2px]">Name :- <span className="text-indigo-600 text-xl mx-5 font-semibold">{userDisplay.name}</span></p>
-                        <p className="py-[2px]">Email:- <span className="text-indigo-600 text-xl mx-5 font-semibold">{userDisplay.email}</span></p>
+                        <h3 className="font-bold text-3xl mb-5 text-center">User Details</h3>
+                        <p className="py-[2px]">Name :- <span className="text-gray-800 text-xl mx-5 font-bold">{userDisplay.name}</span></p>
+                        <p className="py-[2px]">Email:- <span className="text-gray-800 text-xl mx-5 font-bold">{userDisplay.email}</span></p>
                         <p className="py-[2px]">Type:- 
 
                          {/* <span className="text-indigo-600 text-xl mx-5 font-semibold">{userDisplay.userType}</span> */}
-                         <details className="dropdown" id="userTypeDropdown">
-                            <summary className="m-1 btn bg-gray-700 text-white">{userDisplay.userType}</summary>
+                         <details className="dropdown " id="userTypeDropdown">
+                            <summary className="m-1 btn bg-black hover:bg-black/80 text-white ms-8">{userDisplay.userType}</summary>
                             <ul name="userType" onClick={handleUserType} className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                                 <li><a>Customer</a></li>
                                 <li><a>Admin</a></li>
@@ -57,7 +57,7 @@ function UserDisplayModal ({user, resetTable}) {
                         <p className="py-[2px]">Status:-
                           {/* <span className="text-indigo-600 text-xl mx-5 font-semibold">{userDisplay.userStatus}</span> */}
                           <details className="dropdown" id="userStatusDropdown">
-                                <summary className="m-1 btn bg-gray-700 text-white">{userDisplay.userStatus}</summary>
+                                <summary className="m-1 btn bg-black hover:bg-black/80 text-white ms-6">{userDisplay.userStatus}</summary>
                                 <ul name="userStatus" onClick={handleUserType} className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                                     <li><a>Suspended</a></li>
                                     <li><a>Rejected</a></li>
@@ -65,11 +65,12 @@ function UserDisplayModal ({user, resetTable}) {
                                 </ul>
                             </details>
                          </p>
-                        <p className="py-[2px]">ClientName:- <span className="text-indigo-600 text-xl mx-5 font-semibold">{userDisplay.clientName}</span></p>
+                        <p className="py-[2px]">ClientName:- <span className="text-gray-800 text-xl mx-5 font-bold">{userDisplay.clientName}</span></p>
                         <div className="modal-action">
                         <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}
-                            <button className="btn">Close</button>
+                            <button className="btn bg-black text-white hover:text-white hover:bg-black/80 ">Close</button>
+
                         </form>
                         </div>
                     </div>
