@@ -169,7 +169,7 @@ const ticketSlice = createSlice({
 
         })
         .addCase(createTicket.fulfilled, (state, action) => {
-            console.log("action of newCreateTicket", action)
+            // console.log("action of newCreateTicket", action)
             if(action?.payload?.data == undefined) return;
             const newTicket = action.payload.data;
             state.downloadedTickets.push(newTicket)

@@ -18,7 +18,7 @@ function Home () {
 
     const [ticketsState] = useTicket()
     const authState = useSelector((state) => state.auth)
-    console.log(authState)
+    // console.log(authState)
     const pieChartData = {
         labels: Object.keys(ticketsState.ticketDistribution),
         datasets: [
@@ -31,7 +31,7 @@ function Home () {
 
     return (
         <HomeLayout>
-            <h1 className="text-center text-4xl font-bold mt-10 mb-10">{authState.role} Dashboard <span className="text-3xl font-semibold text-indigo-400">{authState.role != "customer" ? "All the tickets are assigned to you" : "All the tickets are raised by you."}</span> </h1>
+            <h1 className="text-center text-4xl font-bold mt-10 mb-10">{authState.role} Dashboard <span className="text-3xl font-semibold text-indigo-400">{authState.role != "customer" ? `All the tickets are assigned to You` : `All the tickets are raised by You`}</span> </h1>
             <div className="flex justify-center items-center gap-5 mt-4">
                 <Card titleText="open" quantity={ticketsState.ticketDistribution.open} status={ticketsState.ticketDistribution.open / ticketsState.ticketList.length}>
                     <BsFillPencilFill className='inline mr-2' />

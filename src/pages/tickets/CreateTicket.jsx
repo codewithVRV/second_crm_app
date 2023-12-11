@@ -8,9 +8,9 @@ import useTicket from "../../hooks/useTickets";
 function CreateTicket () {
     const auth = useSelector((state) => state.auth)
     const ticketState = useSelector((state) => state.tickets)
-    console.log("downloadedTickets", ticketState.downloadedTickets)
-    console.log("ticketList", ticketState.ticketList)
-    console.log("ticketDistribution", ticketState.ticketDistribution)
+    // console.log("downloadedTickets", ticketState.downloadedTickets)
+    // console.log("ticketList", ticketState.ticketList)
+    // console.log("ticketDistribution", ticketState.ticketDistribution)
     const dispatcher = useDispatch()
 
     useTicket()
@@ -31,7 +31,7 @@ function CreateTicket () {
             return;
         }
         const response = await dispatcher(createTicket(ticket))
-        console.log("response of newTicket", response)
+        // console.log("response of newTicket", response)
         if(response.payload?.data) {
             setTicket({
                 title: "",
