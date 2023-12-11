@@ -152,10 +152,10 @@ const ticketSlice = createSlice({
                 if(ticket._id === updatedTicket._id) return updatedTicket;
                 return ticket;
             })
-            state.ticketDistribution = state.ticketDistribution.map((ticket) => {
-                if(ticket._id === updatedTicket._id) return updatedTicket;
-                return ticket;
-            })
+            // state.ticketDistribution = state.ticketDistribution.map((ticket) => {
+            //     if(ticket._id === updatedTicket._id) return updatedTicket;
+            //     return ticket;
+            // })
             state.ticketDistribution =  {
                 open: 0,
                 inProgress: 0,

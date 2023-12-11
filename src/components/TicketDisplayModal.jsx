@@ -5,6 +5,7 @@ import { updateTicket } from "../redux/ticketSlice";
 function TicketDisplayModal ({ticket}) {
     const dispatcher = useDispatch()
     const [currentTicket, setCurrentTicket] = useState(ticket)
+    console.log("newTicket", currentTicket)
 
     function handleTicketChange (e) {
         const {name, value} = e.target;

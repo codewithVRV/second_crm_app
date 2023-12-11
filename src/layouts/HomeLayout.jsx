@@ -43,12 +43,12 @@ function HomeLayout ({children}) {
                                 {
                                     !authState.isLoggedIn ? (
                                         <>
-                                            <Link to={"/login"} className='hover:bg-blue-600 rounded-xl hover:text-white hover:font-semibold transition-all ease-in-out duration-500 btn-primary px-2 py-1 rounded-md font-semibold w-full'>Login</Link>
-                                            <Link to={"/signup"} className='hover:bg-blue-600 rounded-xl hover:text-white hover:font-semibold transition-all ease-in-out duration-500 btn-primary px-2 py-1 rounded-md font-semibold w-full'>SingUp</Link>
+                                            <Link to={"/login"} className='hover:bg-blue-600 rounded-xl hover:text-white hover:font-semibold transition-all ease-in-out duration-500 btn-primary px-2 py-1 font-semibold w-full'>Login</Link>
+                                            <Link to={"/signup"} className='hover:bg-blue-600 rounded-xl hover:text-white hover:font-semibold transition-all ease-in-out duration-500 btn-primary px-2 py-1  font-semibold w-full'>SingUp</Link>
                                         </>
                                     ) : (
                                         <>
-                                            <Link  className='hover:bg-blue-600 rounded-xl hover:text-white hover:font-semibold transition-all ease-in-out duration-500 btn-primary px-2 py-1 rounded-md text-center font-semibold w-full' onClick={onLogout}>Log Out</Link>
+                                            <Link  className='hover:bg-blue-600 rounded-xl hover:text-white hover:font-semibold transition-all ease-in-out duration-500 btn-primary px-2 py-1  text-center font-semibold w-full' onClick={onLogout}>Log Out</Link>
                                         </>
                                     )
                                 }
