@@ -21,7 +21,7 @@ function CreateTicket () {
         status: "open",
         clientName: auth.data.clientName,
     })
-    console.log("new Ticket status",ticket)
+    // console.log("new Ticket status",ticket)
 
 
     async function onFormSubmit (e) {
