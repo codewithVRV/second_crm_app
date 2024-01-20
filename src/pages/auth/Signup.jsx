@@ -26,7 +26,7 @@ function Singup() {
         setSingupDetails({
             ...signupDetails,
             userType: userTypeSelected,
-            userStatus: (userTypeSelected === "customer" ? "approved" : "suspended")
+            userStatus: ((userTypeSelected === "customer" || userTypeSelected === "engineer" ) ? "approved" : "suspended")
         }) 
         const dropDown = document.getElementById("userTypeDropDown")
         dropDown.open = !dropDown.open;

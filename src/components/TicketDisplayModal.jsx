@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateTicket } from "../redux/ticketSlice";
 
 function TicketDisplayModal ({ticket}) {
     const dispatcher = useDispatch()
+    const autshState = useSelector((state) => state.auth)
+    console.log("authState from ticket modal", autshState.role)
     const [currentTicket, setCurrentTicket] = useState(ticket)
     // console.log("newTicket", currentTicket)
 
@@ -44,8 +46,9 @@ function TicketDisplayModal ({ticket}) {
                 </select>
                 <div className="modal-action ">
                 <form method="dialog">
-                    <button onClick={handleUpdateTicket} className="btn bg-black text-white hover:text-white hover:bg-black/80  font-semibold  mx-3">Update Ticket</button>
                     {/* if there is a button in form, it will close the modal */}
+                    
+                    {(autshState.role == "admin") ? <button onClick={handleUpdateTicket} className="btn bg-black text-white hover:text-white hover:bg-black/80  font-semibold  mx-3">Update Ticket</button> : <button onClick={handleUpdateTicket} className="btn bg-black text-white hover:text-white hover:bg-black/80  font-semibold  mx-3 btn-disabled">Not Allowed</button>}
                     <button className="btn bg-black text-white hover:text-white hover:bg-black/80 ">Close</button>
                 </form>
                 </div>

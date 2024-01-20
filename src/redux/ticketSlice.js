@@ -79,7 +79,7 @@ export const updateTicket = createAsyncThunk ("tickets/updateTicket", async (tic
 })
 
 export const createTicket = createAsyncThunk ("tickets/createTicket", async (ticket) => {
-    console.log("newTicket from crateticket Thunk", ticket)
+    // console.log("newTicket from crateticket Thunk", ticket)
     try{
         const response =  axiosInstance.post(`ticket`, 
             ticket, 
@@ -119,6 +119,7 @@ const ticketSlice = createSlice({
             state.ticketList = action?.payload?.data?.result;
             state.downloadedTickets = action?.payload?.data?.result;
             const tickets = action?.payload?.data?.result;
+            console.log("getAllCreatedTicketsforTheUser", tickets)
             state.ticketDistribution =  {
                 open: 0,
                 inProgress: 0,
