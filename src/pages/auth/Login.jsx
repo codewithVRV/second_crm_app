@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,6 +10,9 @@ function Login () {
         email: "", password:""
     })
 
+    useEffect(() => {
+        console.log("base url is", import.meta.env.VITE_BASE_URL)
+    }, [])
     function resetLoginDetails () {
         setLoginDetails({
             email: "", password:""
@@ -21,7 +24,6 @@ function Login () {
         if(!loginDetails.email || !loginDetails.password) return;
 
         const response = await dispatch(login(loginDetails))
-        // console.log("all response object is", response)
         if(response.payload) {
             // toast.success(`${response.payload?.data?.message} Successfully.. `)
             navigator("/")
