@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,9 +10,7 @@ function Login () {
         email: "", password:""
     })
 
-    useEffect(() => {
-        
-    }, [])
+
     function resetLoginDetails () {
         setLoginDetails({
             email: "", password:""
@@ -56,7 +54,7 @@ function Login () {
                             <div>
                             <label htmlFor="" className="text-base font-medium text-gray-900">
                                 {" "}
-                                Email address{" "}
+                                Email address{" "} <span className="font-semibold text-green-400">Use this:   admin121@gmail.com</span>
                             </label>
                             <div className="mt-2">
                                 <input
@@ -72,7 +70,7 @@ function Login () {
                             <div className="flex items-center justify-between">
                                 <label htmlFor="" className="text-base font-medium text-gray-900">
                                 {" "}
-                                Password{" "}
+                                Password{" "}  <span className="font-semibold text-green-400">Use this:  Admin@121</span>
                                 </label>
                                 <a
                                 href="#"
