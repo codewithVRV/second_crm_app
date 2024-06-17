@@ -11,7 +11,7 @@ function Login () {
     })
 
     useEffect(() => {
-        console.log("base url is", import.meta.env.VITE_BASE_URL)
+        
     }, [])
     function resetLoginDetails () {
         setLoginDetails({

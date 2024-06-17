@@ -16,7 +16,7 @@ export const login = createAsyncThunk("/auth/login", async (data) =>{
         toast.promise(response, {
             loading: "You are logining..",
             success: "Successfully login",
-            error : "Something Went wrong, Try again.."
+            error : "Something Went wrong, Try again..",
         })
         return await response;
     }

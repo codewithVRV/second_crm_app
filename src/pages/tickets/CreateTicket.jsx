@@ -54,48 +54,46 @@ function CreateTicket () {
     return (
         <HomeLayout>
             <div className="min-h-[50vh] mt-5 flex items-center justify-center">
+  <form 
+    onSubmit={onFormSubmit}
+    className="w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-4xl border p-5 sm:p-10 md:p-16 border-sky-500 rounded-lg bg-sky-600"
+  >
+    <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white text-center">
+      Create new ticket
+    </h1>
 
-            <form 
-                onSubmit={onFormSubmit}
-                className="min-w-[40rem] border p-20 border-sky-500 rounded-lg bg-sky-600"
-            >
+    <div className="form-control w-full my-4 mt-5">
+      <label className="label">
+        <span className="label-text text-black/80 font-semibold text-lg">What is the title of the issue?</span>
+      </label>
+      <input 
+        value={ticket.title}
+        onChange={handleFormChange}
+        name="title"
+        type="text" 
+        placeholder="Type here" 
+        className="input input-bordered input-primary w-full bg-white text-black" 
+      />
+    </div>
 
-                <h1 className="text-4xl font-semibold text-white text-center">
-                    Create new ticket
-                </h1>
+    <div className="form-control w-full my-4">
+      <label className="label">
+        <span className="label-text text-black/80 font-semibold text-lg">Please describe your issue?</span>
+      </label>
+      <textarea 
+        value={ticket.description}
+        onChange={handleFormChange}
+        name="description"
+        placeholder="Type here"
+        rows="8"
+        className="p-2 resize-none w-full rounded-md bg-white text-black" 
+      ></textarea>
+    </div>
 
-                <div className="form-control w-full my-4 mt-5">
-                    <label className="label">
-                        <span className="label-text text-black/80 font-semibold text-lg">What is title of the issue?</span>
-                    </label>
-                    <input 
-                        value={ticket.title}
-                        onChange={handleFormChange}
-                        name="title"
-                    type="text" placeholder="Type here" className="input input-bordered input-primary w-full bg-white text-black" />
-                </div>
+    <button className="btn bg-black w-full text-lg md:text-xl border-none text-white hover:text-white hover:bg-black/80">Submit</button>
+  </form>
+</div>
 
-                <div className="form-control w-full my-4">
-                    <label className="label">
-                        <span className="label-text text-black/80 font-semibold text-lg">Please describe your issue?</span>
-                    </label>
-                    <textarea 
-                        value={ticket.description}
-                        onChange={handleFormChange}
-                        name="description"
-                        placeholder="Type here"
-                        rows="8"
-                        className="p-2 resize-none w-full rounded-md bg-white text-black" 
-                    ></textarea>
-
-                </div>
-
-                <button className="btn bg-black w-full text-xl border-none text-white hover:text-white hover:bg-black/80 ">Submit</button>
-
-
-            </form>
-
-            </div>
         </HomeLayout>
     )
 }
